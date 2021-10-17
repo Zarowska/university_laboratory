@@ -20,9 +20,7 @@ echo "Connected successfully";
 
 $dsn = 'mysql:host=localhost;dbname=university_laboratory';
 $pdo=new PDO($dsn, $username, $password );
-echo "Connected  4";
-
-$sql='INSER INTO tasks(task) VALUES(:task)';
+$sql='INSERT INTO tasks(task) VALUES(:task)';
 $query=$pdo->prepare($sql);
 $query->execute(['task'=>$task]);
 
