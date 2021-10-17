@@ -3,8 +3,10 @@
   width:25%!important;
 }
 
+
 form {
-  width: 50%;
+
+  width: 30%;
   background: #2FCC9A;
   border: 2px solid #228e6c;
   border-radius: 10px;
@@ -12,7 +14,43 @@ form {
 }
 
 #task {
-  width: 60%;
+  width: 70%;
   float: left;
   margin-right: 5%;
+}
+
+
+ul {
+  width: 30%;
+  padding: 0 10px!important;
+}
+
+ul li{
+  list-style: none;
+  padding: 15px;
+  margin-bottom: 10px;
+  background: #fcfcfc;
+  border: 1px solid silver;
+  border-radius: 5px;
+}
+
+ul li:hover{
+  background: #e5e5e5;
+}
+
+ul li button{
+  border: 0;
+  padding: 5px 15px;
+  color: white;
+  font-size: 13px;
+  background: #db5757;
+  position: right;
+  left:130px;
+  border-radius: 5px;
+  float:right;
+
+}
+
+ul li button:hover{
+  background: #a04141;
 }

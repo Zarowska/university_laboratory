@@ -12,9 +12,21 @@
       <div class="content">
         <h1>Hello wold</h1>
         <form action="add.php" method="post">
-          <input type="text" name="task" id="task" placeholder="TODO test" class="form-control">
+          <input type="text" name="task" id="task" placeholder="TO DO" class="form-control">
           <button type="submit" name="sendTask" class="btn btn-success">Send</button>
         </form>
+
+<?php
+require 'configDB.php';
+
+echo '<ul>';
+$query=$pdo->query('SELECT * FROM `TASKS` order by `id`');
+while ($row=$query->fetch(PDO::FETCH_OBJ)) {
+  echo '<li><b>'.$row->task.'</b><a href="delete.php?id='.$row->id.'"><button>Delete</button></a></li>';
+}
+echo '</ul>';
+?>
+
       </div>
     </body>
 </html>
