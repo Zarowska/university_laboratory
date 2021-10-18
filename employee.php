@@ -9,23 +9,12 @@
 				<title>University laboratory</title>
 	  </head>
     <body>
-
-        <div class="empty">
-        </div>
-
-        <header class="header">
-           <div class="container">
-            <div class="header__inner">
-                <div class="header__logo">University laboratory</div>
-                <nav class="nav">
-                    <a class="nav__link active" href="add.php"> <h4><b>Home </b></h4></a>
-                    <a class="nav__link active" href="index.php"> <h4><b>Login </b></h4></a>
-                </nav>
-            </div>
-        </div>
-        </header>
-
-
+      <div class="content">
+        <h1>Hello wold</h1>
+        <form action="add.php" method="post">
+          <input type="text" name="task" id="task" placeholder="TO DO" class="form-control">
+          <button type="submit" name="sendTask" class="btn btn-success">Send</button>
+        </form>
 
         <?php
         require 'configDB.php';
@@ -36,25 +25,22 @@
         //  echo '<li><b>'.$row->task.'</b><a href="delete.php?id='.$row->id.'"><button>Delete</button></a></li>';
 
            echo '
-             <div class="disabled__container">
+           <li>
+            <div class="disabled__container">
              <div class="disabled__col  disabled__col--first">
 
              <h4>'.$row->task.'</h4><p>dostepno '.$row->id.' szt </p>
              </div>
              <div class="disabled__col  disabled__col--second">
-                description   '.$row->task.'
-                <br>description
-                <br>description
-                <br>description
+                  '.$row->task.'
              </div>
              <div class="fdisabled__col  disabled__col--third">
-                <img src="img\1.jpg" alt="">
+                 '.$row->task.'zdjecia<p></p>'.'<img src="img\microscope.jpg" alt="">
              </div>
            </div>
-           ';
+           </li>';
         }
-?>
-
+        ?>
 
     </body>
 </html>
