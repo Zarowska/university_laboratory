@@ -28,9 +28,16 @@
 
   <div class="empty"></div>
 
+  <?php
+    $tags = $_POST['tags'];
+    ?>
+
 	<div class="disabled__container">
-		<form action="index_with_tag.php" method="post">
-            <label for="tags"><h4>Choose a tag:</h4></label>
+    <div class="disabled__col  disabled__col--first">
+      <h4> Chosen tag is "<?php echo $tags; ?>"   </h4>
+    </div>
+    	<form action="index_with_tag.php" method="post">
+            <label for="tags"><h4>Choose other tag:</h4></label>
 			<select name="tags">
 				<option value="all">all</option>
 				<option value="chemistry">chemistry</option>
@@ -39,15 +46,22 @@
 			</select>
 		<input type="submit">
 		</form>
+
 	</div>
 
 
-    <?php
+  <?php
+    $tags = $_POST['tags'];
     require 'configDB.php';
     echo '<ul>';
-    $query=$pdo->query("SELECT equipment_name, producer, model, IFNULL(e.amount,0)-IFNULL(h.used,0) as amount, tag, description, URL, image FROM `equipments` e left join (select equipment_id, IFNULL(count(*),0) as used from `hire` where date_return is null group by equipment_id ) h on e.equipment_id = h.equipment_id order by e.equipment_id  ");
+    if ($tags == "all") {
+      $query=$pdo->query("SELECT equipment_name, producer, model, IFNULL(e.amount,0)-IFNULL(h.used,0) as amount, tag, description, URL, image FROM `equipments` e left join (select equipment_id, IFNULL(count(*),0) as used from `hire` where date_return is null group by equipment_id ) h on e.equipment_id = h.equipment_id order by e.equipment_id  ");
+    }
+    else{
+      $query=$pdo->query("SELECT equipment_name, producer, model, IFNULL(e.amount,0)-IFNULL(h.used,0) as amount, tag, description, URL, image FROM `equipments` e  left join  (select equipment_id, IFNULL(count(*),0) as used from `hire` where date_return is null group by equipment_id ) h on e.equipment_id = h.equipment_id where e.tag='$tags' order by e.equipment_id  ");
+    }
     while ($row=$query->fetch(PDO::FETCH_OBJ)) {
-    echo '<div class="disabled__container">
+      echo '<div class="disabled__container">
       <div class="disabled__col  disabled__col--first">
       <i> <h4>'.$row->equipment_name.'</h4></i>
       <br><h6> producer: '.$row->producer.'
@@ -58,13 +72,13 @@
       <div class="disabled__col  disabled__col--second">
       '.$row->description.'
       <br><br>
-       <a href= '.$row->URL.'> <b>more</b></a>
-       </div>
-       <div class="fdisabled__col  disabled__col--third">
-       <img src="'.$row->image.'" alt="">
-       </div>
-       </div>';}
-       ?>
+      <a href= '.$row->URL.'> <b>more</b></a>
+      </div>
+      <div class="fdisabled__col  disabled__col--third">
+      <img src="'.$row->image.'" alt="">
+      </div>
+      </div>';}
+    ?>
 
-    </body>
+  </body>
 </html>

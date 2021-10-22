@@ -9,8 +9,24 @@
 				<title>University laboratory</title>
 	  </head>
     <body>
+
+      <div class="empty">
+      </div>
+
+      <header class="header">
+         <div class="container">
+          <div class="header__inner">
+              <div class="header__logo">University laboratory</div>
+              <nav class="nav">
+                  <a class="nav__link active" href="index.php"> <h4><b>Home </b></h4></a>
+                  <a class="nav__link active" href="employee.php"> <h4><b>Student</b></h4></a>
+                  <a class="nav__link active" href="employee.php"> <h4><b>Employee</b></h4></a>
+              </nav>
+          </div>
+      </div>
+      </header>
+
       <div class="content">
-        <h1>Hello wold</h1>
         <form action="add.php" method="post">
           <input type="text" name="task" id="task" placeholder="TO DO" class="form-control">
           <button type="submit" name="sendTask" class="btn btn-success">Send</button>
@@ -18,29 +34,12 @@
 
         <?php
         require 'configDB.php';
-
         echo '<ul>';
         $query=$pdo->query('SELECT * FROM `TASKS` order by `id`');
         while ($row=$query->fetch(PDO::FETCH_OBJ)) {
-        //  echo '<li><b>'.$row->task.'</b><a href="delete.php?id='.$row->id.'"><button>Delete</button></a></li>';
-
-           echo '
-           <li>
-            <div class="disabled__container">
-             <div class="disabled__col  disabled__col--first">
-
-             <h4>'.$row->task.'</h4><p>dostepno '.$row->id.' szt </p>
-             </div>
-             <div class="disabled__col  disabled__col--second">
-                  '.$row->task.'
-             </div>
-             <div class="fdisabled__col  disabled__col--third">
-                 '.$row->task.'zdjecia<p></p>'.'<img src="img\microscope.jpg" alt="">
-             </div>
-           </div>
-           </li>';
-        }
-        ?>
+        echo '<li><b>'.$row->task.'</b><a href="delete.php?id='.$row->id.'"><button>Delete</button></a></li>';
+      };
+      ?>
 
     </body>
 </html>
