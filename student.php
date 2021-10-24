@@ -29,19 +29,8 @@
   </header>
 
 
-    <div class="empty">
-    </div>
 
 
-<div class="container mt-4">
-  <h1>Login</h1>
-  <form action="auth.php" method="post">
-    <input type="text" class="form-control" name="login"  id="login" placeholder="Enter login"><br>
-    <input type="password" class="form-control" name="password"  id="password" placeholder="Enter password"><br>
-    <button class="button button1=success" type="submit"><h5>Login</h5></button>
-  </form>
-
-</div>
 
 </body>
 

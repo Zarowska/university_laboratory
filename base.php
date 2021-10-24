@@ -20,13 +20,14 @@
       <div class="header__inner">
           <div class="header__logo">University laboratory</div>
           <nav class="nav">
-              <a class="nav__link active" href="add.php"> <h4><b>Home </b></h4></a>
-              <a class="nav__link active" href="index.php"> <h4><b>Student</b></h4></a>
-              <a class="nav__link active" href="index.php"> <h4><b>Employee</b></h4></a>
+              <a class="nav__link active" href="index.php"> <h4><b>Home </b></h4></a>
+              <a class="nav__link active" href="student.php"> <h4><b>Student</b></h4></a>
+              <a class="nav__link active" href="employee.php"> <h4><b>Employee</b></h4></a>
           </nav>
       </div>
   </div>
   </header>
+
 
 {% block templatesbody %}{% endblock %}
 
