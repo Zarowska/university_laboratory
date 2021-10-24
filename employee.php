@@ -32,16 +32,20 @@
     <div class="empty">
     </div>
 
-
+<?php if(!isset($_COOKIE["employee"])): ?>
 <div class="container mt-4">
-  <h1>Login</h1>
+  <h1>Authorization</h1>
   <form action="auth.php" method="post">
     <input type="text" class="form-control" name="login"  id="login" placeholder="Enter login"><br>
     <input type="password" class="form-control" name="password"  id="password" placeholder="Enter password"><br>
-    <button class="button button1=success" type="submit"><h5>Login</h5></button>
+    <button class="button-23=success" type="submit"><h5>Login</h5></button>
   </form>
-
 </div>
+<?php else: ?>
+  <p> Hello, your login is <?=$_COOKIE['employee']?>.
+  <a class="nav__link active" href="employee_exit.php"> <h4><b>Exit</b></h4></a>
+  </p>
+<?php endif; ?>
 
 </body>
 

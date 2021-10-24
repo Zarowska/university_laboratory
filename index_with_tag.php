@@ -39,12 +39,13 @@
     	<form action="index_with_tag.php" method="post">
             <label for="tags"><h4>Choose other tag:</h4></label>
 			<select name="tags">
+        <option value=" "></option>
 				<option value="all">all</option>
 				<option value="chemistry">chemistry</option>
 				<option value="physics">physics</option>
 				<option value="microscope">microscope</option>
 			</select>
-		<input type="submit">
+		<input type="submit" value="Send">
 		</form>
 
 	</div>
