@@ -46,7 +46,7 @@
     <?php
     require 'configDB.php';
     echo '<ul>';
-    $query=$pdo->query("SELECT equipment_name, producer, model, amount, IFNULL(e.amount,0)-IFNULL(h.used,0) as amount_free, tag, description, URL, image FROM `equipments` e left join (select equipment_id, IFNULL(count(*),0) as used from `hire` where date_return is null group by equipment_id ) h on e.equipment_id = h.equipment_id order by e.equipment_id  ");
+    $query=$pdo->query("select * from report_for_guest order by equipment_id");
     while ($row=$query->fetch(PDO::FETCH_OBJ)) {
     echo '<div class="disabled__container">
       <div class="disabled__col  disabled__col--first">
@@ -67,7 +67,6 @@
        <img src="'.$row->image.'" alt="">
        </div>
        </div>';}
-       $pdo = null;
        ?>
 
     </body>

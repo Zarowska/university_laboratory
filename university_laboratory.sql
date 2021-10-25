@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 24 Paź 2021, 03:01
+-- Czas generowania: 25 Paź 2021, 02:48
 -- Wersja serwera: 10.4.21-MariaDB
 -- Wersja PHP: 8.0.11
 
@@ -100,6 +100,48 @@ CREATE TABLE `history` (
 -- --------------------------------------------------------
 
 --
+-- Zastąpiona struktura widoku `report_for_guest`
+-- (Zobacz poniżej rzeczywisty widok)
+--
+CREATE TABLE `report_for_guest` (
+`equipment_id` int(11)
+,`equipment_name` varchar(20)
+,`producer` varchar(20)
+,`model` varchar(20)
+,`amount` int(11)
+,`amount_free` bigint(22)
+,`tag` varchar(20)
+,`description` text
+,`URL` varchar(1000)
+,`image` varchar(1000)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Zastąpiona struktura widoku `report_for_student`
+-- (Zobacz poniżej rzeczywisty widok)
+--
+CREATE TABLE `report_for_student` (
+`equipment_name` varchar(20)
+,`producer` varchar(20)
+,`model` varchar(20)
+,`amount` int(11)
+,`tag` varchar(20)
+,`description` text
+,`URL` varchar(1000)
+,`image` varchar(1000)
+,`hire_id` int(11)
+,`equipment_id` int(11)
+,`user_id` int(11)
+,`login` varchar(20)
+,`date_borrow` timestamp
+,`date_return` timestamp
+);
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `tasks`
 --
 
@@ -144,6 +186,24 @@ INSERT INTO `users` (`user_id`, `login`, `user_name`, `surname`, `email`, `passw
 (4, 'benferinga', 'Ben', 'Feringa', 'Ben.Feringa@zai.com', '5ffba41ecf29473f80665c8a8d0a64fd', 'student'),
 (5, 'giopar', 'Giorgio', 'Parisi', 'Giorgio.Parisi@zai.com', '5ffba41ecf29473f80665c8a8d0a64fd', 'student'),
 (6, 'alfnob', 'Alfred', 'Nobel', 'Alfred.Nobel@zai.com', 'ab601a6f79e6a06d278e5c4dae6e77fa', 'employee');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura widoku `report_for_guest`
+--
+DROP TABLE IF EXISTS `report_for_guest`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `report_for_guest`  AS   (select `e`.`equipment_id` AS `equipment_id`,`e`.`equipment_name` AS `equipment_name`,`e`.`producer` AS `producer`,`e`.`model` AS `model`,`e`.`amount` AS `amount`,ifnull(`e`.`amount`,0) - ifnull(`h`.`used`,0) AS `amount_free`,`e`.`tag` AS `tag`,`e`.`description` AS `description`,`e`.`URL` AS `URL`,`e`.`image` AS `image` from (`equipments` `e` left join (select `hire`.`equipment_id` AS `equipment_id`,ifnull(count(0),0) AS `used` from `hire` where `hire`.`date_return` is null group by `hire`.`equipment_id`) `h` on(`e`.`equipment_id` = `h`.`equipment_id`)) order by `e`.`equipment_id`)  ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura widoku `report_for_student`
+--
+DROP TABLE IF EXISTS `report_for_student`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `report_for_student`  AS   (select `e`.`equipment_name` AS `equipment_name`,`e`.`producer` AS `producer`,`e`.`model` AS `model`,`e`.`amount` AS `amount`,`e`.`tag` AS `tag`,`e`.`description` AS `description`,`e`.`URL` AS `URL`,`e`.`image` AS `image`,`h`.`hire_id` AS `hire_id`,`h`.`equipment_id` AS `equipment_id`,`h`.`user_id` AS `user_id`,`h`.`login` AS `login`,`h`.`date_borrow` AS `date_borrow`,`h`.`date_return` AS `date_return` from (`equipments` `e` join `hire` `h`) where `e`.`equipment_id` = `h`.`equipment_id` and `h`.`date_return` is null order by `e`.`equipment_id`)  ;
 
 --
 -- Indeksy dla zrzutów tabel

@@ -23,14 +23,54 @@
               <a class="nav__link active" href="index.php"> <h4><b>Home </b></h4></a>
               <a class="nav__link active" href="student.php"> <h4><b>Student</b></h4></a>
               <a class="nav__link active" href="employee.php"> <h4><b>Employee</b></h4></a>
+              <a class="nav__link active" href="student_exit.php"> <h4><b>Exit</b></h4></a>
           </nav>
       </div>
   </div>
   </header>
 
 
+    <div class="empty">
+    </div>
+
+<?php if(!isset($_COOKIE["student"])): ?>
+<div class="container mt-4">
+  <h1>Authorization for student</h1>
+  <form action="student_auth.php" method="post">
+    <input type="text" class="form-control" name="login"  id="login" placeholder="Enter login"><br>
+    <input type="password" class="form-control" name="password"  id="password" placeholder="Enter password"><br>
+    <button class="button-23=success" type="submit"><h5>Login</h5></button>
+  </form>
+</div>
+<?php else:
+$login = $_COOKIE['student'];
+  ?>
 
 
+  <?php
+  require 'configDB.php';
+  echo '<ul>';
+  $query=$pdo->query("select * from report_for_student where login = '$login'  order by equipment_id");
+ echo '<h4><b><p>  Your equipments:  </p></b></h4>';
+  while ($row=$query->fetch(PDO::FETCH_OBJ)) {
+  echo '
+  <div class="disabled__container">
+    <div class="disabled__col  disabled__col--first">
+    <i> <h4>'.$row->equipment_name.'</h4></i>
+    <br><h6> producer: '.$row->producer.'
+    <br>model: '.$row->model.'</h6>
+    <br>tag:   '.$row->tag. '
+    <br>
+    </div>
+    <div class="disabled__col  disabled__col--second">
+    date_borrow:  '.$row->date_borrow.'
+     </div>
+     <div class="fdisabled__col  disabled__col--third">
+     <img src="'.$row->image.'" alt="">
+     </div>
+     </div>';}
+     ?>
+<?php endif; ?>
 
 </body>
 
