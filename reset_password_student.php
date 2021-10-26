@@ -20,31 +20,31 @@
       <div class="header__inner">
           <div class="header__logo">University laboratory</div>
           <nav class="nav">
-              <a class="nav__link active" href="index.php"> <h4><b>Home </b></h4></a>
-              <a class="nav__link active" href="reset_password_employee.php"> <h4><b>Reset password</b></h4></a>
-              <a class="nav__link active" href="employee_exit.php"> <h4><b>Exit</b></h4></a>
+            <a class="nav__link active" href="index.php"> <h4><b>Home </b></h4></a>
+            <a class="nav__link active" href="student.php"> <h4><b>Student</b></h4></a>
+            <a class="nav__link active" href="employee.php"> <h4><b>Employee</b></h4></a>
           </nav>
       </div>
   </div>
   </header>
 
-
     <div class="empty">
     </div>
 
-<?php if(!isset($_COOKIE["employee"])): ?>
+<?php if(!isset($_COOKIE["student"])): ?>
 <div class="container mt-4">
-  <h1>Authorization for employee</h1>
-  <form action="employee_auth.php" method="post">
-    <input type="text" class="form-control" name="login"  id="login" placeholder="Enter login"><br>
-    <input type="password" class="form-control" name="password"  id="password" placeholder="Enter password"><br>
-    <button class="button-23=success" type="submit"><h5>Login</h5></button>
-  </form>
+  <h4>Back to authorization for student:</h4>
+  <a class="nav__link active" href="student.php"> <h4><b>Back</b></h4></a>
 </div>
+
 <?php else: ?>
-  <p> Hello employee, your login is <?=$_COOKIE['employee']?>.
-  <a class="nav__link active" href="employee_exit.php"> <h4><b>Exit</b></h4></a>
-  </p>
+<h4>Enter new password:</h4>
+  <form action="new_password_student.php" method="post">
+    <input type="password" class="form-control" name="new_password_student"  id="new_password_student" placeholder="Enter new  password"><br>
+    <button class="button-23=success" type="submit"><h5>Reset</h5></button>
+  </form>
+
+
 <?php endif; ?>
 
 </body>

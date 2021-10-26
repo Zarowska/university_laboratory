@@ -21,8 +21,7 @@
           <div class="header__logo">University laboratory</div>
           <nav class="nav">
               <a class="nav__link active" href="index.php"> <h4><b>Home </b></h4></a>
-              <a class="nav__link active" href="student.php"> <h4><b>Student</b></h4></a>
-              <a class="nav__link active" href="employee.php"> <h4><b>Employee</b></h4></a>
+              <a class="nav__link active" href="reset_password_student.php"> <h4><b>Reset password</b></h4></a>
               <a class="nav__link active" href="student_exit.php"> <h4><b>Exit</b></h4></a>
           </nav>
       </div>

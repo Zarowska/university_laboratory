@@ -67,7 +67,7 @@
        <img src="'.$row->image.'" alt="">
        </div>
        </div>';}
-       ?>
+         ?>
 
     </body>
 </html>
