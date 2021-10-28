@@ -45,6 +45,33 @@
   <p> Hello employee, your login is <?=$_COOKIE['employee']?>.
   <a class="nav__link active" href="employee_exit.php"> <h4><b>Exit</b></h4></a>
   </p>
+
+
+<div class="disabled__container">
+  <table style="width:100%">
+              <caption> </caption>
+              <tr>
+                 <td><h4> User </h4></td>
+                 <td><h4> Equipments </h4> </td>
+                 <td><h4> Report </h4> </td>
+               </tr>
+               <tr>
+                  <td><h4> <a href="employee.php">Add or delete users</a> </h4></td>
+                  <td><h4> <a href="employee.php">Add or delete equipments</a> </h4> </td>
+                  <td><h4> <a href="report_for_employee.php">Generate report</a> </h4> </td>
+              </tr>
+              <tr>
+                 <td><h4> <a href="employee.php">Edit users</a> </h4></td>
+                 <td><h4> <a href="employee.php">Edit equipments</a> </h4> </td>
+                 <td><h4> <a href="download_report.php">Download report</a> </h4> </td>
+                 </tr>
+          </table>
+  	</div>
+</div>
+
+
+
+
 <?php endif; ?>
 
 </body>

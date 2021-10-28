@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 27 Paź 2021, 22:11
+-- Czas generowania: 27 Paź 2021, 22:53
 -- Wersja serwera: 10.4.21-MariaDB
 -- Wersja PHP: 8.0.11
 
@@ -24,13 +24,13 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktura widoku `report_for_guest`
+-- Struktura widoku `report_for_student`
 --
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `report_for_guest`  AS   (select `e`.`equipment_id` AS `equipment_id`,`e`.`equipment_name` AS `equipment_name`,`e`.`producer` AS `producer`,`e`.`model` AS `model`,`e`.`amount` AS `amount`,ifnull(`e`.`amount`,0) - ifnull(`h`.`used`,0) AS `amount_free`,`e`.`tag` AS `tag`,`e`.`description` AS `description`,`e`.`URL` AS `URL`,`e`.`image` AS `image` from (`equipments` `e` left join (select `hire`.`equipment_id` AS `equipment_id`,ifnull(count(0),0) AS `used` from `hire` where `hire`.`date_return` is null group by `hire`.`equipment_id`) `h` on(`e`.`equipment_id` = `h`.`equipment_id`)) order by `e`.`equipment_id`)  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `report_for_student`  AS   (select `e`.`equipment_name` AS `equipment_name`,`e`.`producer` AS `producer`,`e`.`model` AS `model`,`e`.`amount` AS `amount`,`e`.`tag` AS `tag`,`e`.`description` AS `description`,`e`.`URL` AS `URL`,`e`.`image` AS `image`,`h`.`hire_id` AS `hire_id`,`h`.`equipment_id` AS `equipment_id`,`h`.`user_id` AS `user_id`,`h`.`login` AS `login`,`h`.`date_borrow` AS `date_borrow`,`h`.`date_return` AS `date_return` from (`equipments` `e` join `hire` `h`) where `e`.`equipment_id` = `h`.`equipment_id` and `h`.`date_return` is null order by `e`.`equipment_id`)  ;
 
 --
--- VIEW `report_for_guest`
+-- VIEW `report_for_student`
 -- Dane: Żaden
 --
 
