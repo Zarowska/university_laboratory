@@ -56,13 +56,13 @@
                  <td><h4> Report </h4> </td>
                </tr>
                <tr>
-                  <td><h4> <a href="employee.php">Add or delete users</a> </h4></td>
+                  <td><h4> <a href="add_delete_users.php">Add or delete users</a> </h4></td>
                   <td><h4> <a href="employee.php">Add or delete equipments</a> </h4> </td>
-                  <td><h4> <a href="report_for_employee.php">Generate report</a> </h4> </td>
+                  <td><h4> <a href="report_for_employee.php">Show report</a> </h4> </td>
               </tr>
               <tr>
-                 <td><h4> <a href="employee.php">Edit users</a> </h4></td>
-                 <td><h4> <a href="employee.php">Edit equipments</a> </h4> </td>
+            <td></td>
+              <td></td>
                  <td><h4> <a href="download_report.php">Download report</a> </h4> </td>
                  </tr>
           </table>
