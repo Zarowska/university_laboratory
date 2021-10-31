@@ -41,10 +41,21 @@
     <button class="button-23=success" type="submit"><h5>Login</h5></button>
   </form>
 </div>
-<?php else:
-$login = $_COOKIE['student'];
+<?php else: ?>
+<?php
+  $login=$_COOKIE['student'];
+  require 'configDB.php';
+  $sql = "SELECT * FROM `users` WHERE `login`=:login ";
+  $query=$pdo->prepare($sql);
+  $query->execute(array('login' => $login));
+  $row=$query->fetch(PDO::FETCH_OBJ);
+  $user_name=$row->user_name;
+  $surname=$row->surname;
   ?>
 
+  <div class="container mt-4">
+  <h4><p> Hello  <b><?=$user_name?>   <?=$surname?> </b>. </h4>
+  </div>
 
   <?php
   require 'configDB.php';

@@ -1,3 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+			<meta charset="utf-8">
+      <meta name="viewport" content="width=device-wigth, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+				<title>University laboratory</title>
+	  </head>
+    <body>
+
+
+<body>
+  <div class="empty">
+  </div>
+
+  <header class="header">
+     <div class="container">
+      <div class="header__inner">
+          <div class="header__logo">University laboratory</div>
+          <nav class="nav">
+              <a class="nav__link active" href="index.php"> <h4><b>Home </b></h4></a>
+              <a class="nav__link active" href="reset_password_employee.php"> <h4><b>Reset password</b></h4></a>
+              <a class="nav__link active" href="employee_exit.php"> <h4><b>Exit</b></h4></a>
+          </nav>
+      </div>
+  </div>
+  </header>
+
+
+    <div class="empty">
+    </div>
+
+<?php if(!isset($_COOKIE["employee"])): ?>
+<div class="container mt-4">
+  <h1>Authorization for employee</h1>
+  <form action="employee_auth.php" method="post">
+    <input type="text" class="form-control" name="login"  id="login" placeholder="Enter login"><br>
+    <input type="password" class="form-control" name="password"  id="password" placeholder="Enter password"><br>
+    <button class="button-23=success" type="submit"><h5>Login</h5></button>
+  </form>
+</div>
+
+<?php else: ?>
+
 <?php
 //$servername = "localhost";
 //$username = "root";
@@ -5,7 +51,7 @@
 //$dbname="university_laboratory";
 
 $login= filter_var(trim($_POST['login']),FILTER_SANITIZE_STRING);
-$password=filter_var(trim($_POST['password']),FILTER_SANITIZE_STRING);
+$user_password= filter_var(trim($_POST['user_password']),FILTER_SANITIZE_STRING);
 $user_name= filter_var(trim($_POST['user_name']),FILTER_SANITIZE_STRING);
 $surname= filter_var(trim($_POST['surname']),FILTER_SANITIZE_STRING);
 $email= filter_var(trim($_POST['email']),FILTER_SANITIZE_STRING);
@@ -28,12 +74,14 @@ elseif ($login_count>0) {
   exit;
 };
 
-if($password==''){
-  echo 'Enter password test';
+if($user_password==''){
+  echo
+  '<a class="nav__link active" href="add_delete_users.php"> <h3><b>Back</3></h4></a>'.
+  '<h4>Enter password</h4> '   ;
   exit;
-}
+  }
 else {
-  $password = md5($password."s@som909i");
+  $user_password = md5($user_password."s@som909i");
 }
 
 $sql = "SELECT * FROM `users` WHERE `user_name`=:user_name and `surname`=:surname";
@@ -58,27 +106,27 @@ elseif ($user_count>0) {
 
 $status=$_POST['status'];
 if($status==''){
-  echo 'Choose status';
+  echo
+  '<a class="nav__link active" href="add_delete_users.php"> <h3><b>Back</3></h4></a>'.
+  '<h4>Choose status</h4> '   ;
   exit;
 }
-
-
 require 'configDB.php';
-$data = [
-    'login' => $login,
-    'surname' => $surname,
-    'email' => $email,
-    'password' => $password,
-    'status' => $status
-  ];
 //$dsn = "mysql:host={$servername};dbname={$dbname}";
 //$pdo=new PDO($dsn, $username, $password );
 $sql='INSERT INTO users(login, user_name, surname, email, password, status) VALUES(:login, :user_name, :surname, :email, :password, :status)';
 $query=$pdo->prepare($sql);
 
-$query->execute(array('login' => $login, 'user_name' => $user_name, 'surname' => $surname, 'email' => $email, 'password' => $password, 'status' => $status));
+$query->execute(array('login' => $login, 'user_name' => $user_name, 'surname' => $surname, 'email' => $email, 'password' => $user_password, 'status' => $status));
 
-echo 'Add';
-echo 'Back';
+echo '<h4>The users account has been added.</h4>';
+echo '<a class="nav__link active" href="add_delete_users.php"> <h3><b>Back</3></h4></a>';
 
 ?>
+
+
+<?php endif; ?>
+
+</body>
+
+</html>

@@ -42,9 +42,19 @@
   </form>
 </div>
 <?php else: ?>
-  <p> Hello employee, your login is <?=$_COOKIE['employee']?>.
-  <a class="nav__link active" href="employee_exit.php"> <h4><b>Exit</b></h4></a>
-  </p>
+<?php
+  $login=$_COOKIE['employee'];
+  require 'configDB.php';
+  $sql = "SELECT * FROM `users` WHERE `login`=:login ";
+  $query=$pdo->prepare($sql);
+  $query->execute(array('login' => $login));
+  $row=$query->fetch(PDO::FETCH_OBJ);
+  $user_name=$row->user_name;
+  $surname=$row->surname;
+  ?>
+  <div class="container mt-4">
+  <h4><p> Hello  <b><?=$user_name?>   <?=$surname?> </b>. </h4>
+</div>
 
 
 <div class="disabled__container">

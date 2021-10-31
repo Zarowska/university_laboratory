@@ -28,7 +28,7 @@
 
 
 
-      <div class="empty">      </div>
+     
 
   <?php if(!isset($_COOKIE["employee"])): ?>
   <div class="container mt-4">
@@ -51,8 +51,8 @@
                  <input type="text" name="login" id="login" placeholder="Login" class="form-control">
             </p>
             <p>
-                <label for="emailAddress">Password:</label>
-                  <input type="text" name="password" id="password" placeholder="Password" class="form-control">
+                <label for="user_password">Password:</label>
+                  <input type="password" name="user_password" id="user_password" placeholder="Password" class="form-control">
             </p>
             <p>
                 <label for="firstName">First Name:</label>
@@ -79,7 +79,6 @@
         </form>
       </div>
 
-  <div class="empty"></div>
 <h4>Delete user: </h4>
       <?php
       require 'configDB.php';
@@ -108,7 +107,7 @@
                            <td>'.$row->login.'</td>
                             <td>'.$row->email.' </td>
                             <td>'.$row->status.' </td>
-                            <td><a href="delete_user.php?id='.$row->user_id.'"><button>Delete</button></a> </td>
+                            <td><a href="delete_user.php?user_id='.$row->user_id.'"><button>Delete</button></a> </td>
                        </tr>   ';}
                   echo '
                        <tbody>
