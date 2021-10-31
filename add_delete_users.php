@@ -52,7 +52,7 @@
             </p>
             <p>
                 <label for="emailAddress">Password:</label>
-                  <input type="password" name="password" id="password" placeholder="Password" class="form-control">
+                  <input type="text" name="password" id="password" placeholder="Password" class="form-control">
             </p>
             <p>
                 <label for="firstName">First Name:</label>
