@@ -52,15 +52,15 @@
             </p>
             <p>
                 <label for="emailAddress">Password:</label>
-                  <input type="text" name="password" id="password" placeholder="Password" class="form-control">
+                  <input type="password" name="password" id="password" placeholder="Password" class="form-control">
             </p>
             <p>
                 <label for="firstName">First Name:</label>
-                <input type="text" name="first_name" id="first_name" placeholder="First name" class="form-control">
+                <input type="text" name="user_name" id="user_name" placeholder="First name" class="form-control">
             </p>
             <p>
                 <label for="lastName">Last Name:</label>
-                  <input type="text" name="surname	" id="surname" placeholder="Last name" class="form-control">
+                  <input type="text" name="surname" id="surname" placeholder="Last name" class="form-control">
             </p>
             <p>
                 <label for="emailAddress">Email Address:</label>
@@ -68,10 +68,14 @@
             </p>
             <p>
                 <label for="emailAddress">Status:</label>
-                  <input type="text" name="status" id="status" placeholder="Status" class="form-control">
+                  <select name="status" id="status" input type="text" class="form-control">
+                    <option value="student">student</option>
+                    <option value="employee">employee</option>
+                  </select>
+
             </p>
 
-          <button type="submit" name="sendTask" class="btn btn-success">Send</button>
+          <button type="submit" name="sendTask" class="btn btn-success">Add</button>
         </form>
       </div>
 
