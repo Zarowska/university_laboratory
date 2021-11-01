@@ -67,7 +67,7 @@
                </tr>
                <tr>
                   <td><h4> <a href="add_delete_users.php">Add or delete users</a> </h4></td>
-                  <td><h4> <a href="employee.php">Add or delete equipments</a> </h4> </td>
+                  <td><h4> <a href="add_delete_equipments.php">Add or delete equipments</a> </h4> </td>
                   <td><h4> <a href="report_for_employee.php">Show report</a> </h4> </td>
               </tr>
               <tr>
