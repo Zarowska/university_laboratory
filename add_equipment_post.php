@@ -29,8 +29,10 @@
   </header>
 
 
-    <div class="empty">
-    </div>
+  <div class="container mt-4">
+    <a class="nav__link active" href="employee.php"> <h4><b>Back</b></h4></a>
+    <p>
+  </div>
 
 <?php if(!isset($_COOKIE["employee"])): ?>
 <div class="container mt-4">
@@ -50,81 +52,73 @@
 //$password = "";
 //$dbname="university_laboratory";
 
-$login= filter_var(trim($_POST['login']),FILTER_SANITIZE_STRING);
-$user_password= filter_var(trim($_POST['user_password']),FILTER_SANITIZE_STRING);
-$user_name= filter_var(trim($_POST['user_name']),FILTER_SANITIZE_STRING);
-$surname= filter_var(trim($_POST['surname']),FILTER_SANITIZE_STRING);
-$email= filter_var(trim($_POST['email']),FILTER_SANITIZE_STRING);
 
-require 'configDB.php';
-$sql = "SELECT * FROM `users` WHERE `login`=:login ";
-$query=$pdo->prepare($sql);
-$query->execute(array('login' => $login));
-$login_count=$query->rowCount();
+$equipment_name= filter_var(trim($_POST['equipment_name']),FILTER_SANITIZE_STRING);
+$model= filter_var(trim($_POST['model']),FILTER_SANITIZE_STRING);
+$producer= filter_var(trim($_POST['producer']),FILTER_SANITIZE_STRING);
+$image= filter_var(trim($_POST['image']),FILTER_SANITIZE_STRING);
+$description= filter_var(trim($_POST['description']),FILTER_SANITIZE_STRING);
+$URL= filter_var(trim($_POST['URL']),FILTER_SANITIZE_STRING);
+$tag= filter_var(trim($_POST['tag']),FILTER_SANITIZE_STRING);
+$amount_new= filter_var(trim($_POST['amount']),FILTER_SANITIZE_STRING);
 
-if($login==''){
-  echo 'Enter login';
-  exit;
-}
-elseif ($login_count>0) {
+
+
+if($equipment_name==''){
   echo
-  '<a class="nav__link active" href="add_delete_users.php"> <h3><b>Back</3></h4></a>'.
-  '<h4>The login is used</h4> '
-    ;
-  exit;
-};
-
-if($user_password==''){
-  echo
-  '<a class="nav__link active" href="add_delete_users.php"> <h3><b>Back</3></h4></a>'.
-  '<h4>Enter password</h4> '   ;
+  '<a class="nav__link active" href="add_equipments.php"> <h3><b>Back</3></h4></a>'.
+  '<h4>Enter equipment_name</h4> '   ;
   exit;
   }
-else {
-  $user_password = md5($user_password."s@som909i");
-}
 
-$sql = "SELECT * FROM `users` WHERE `user_name`=:user_name and `surname`=:surname";
-$query=$pdo->prepare($sql);
-$query->execute(array('user_name' => $user_name,'surname' => $surname));
-$user_count=$query->rowCount();
-
-if($user_name==''||$surname==''){
-  echo
-  '<a class="nav__link active" href="add_delete_users.php"> <h3><b>Back</3></h4></a>'.
-  '<h4>First name and surname cannot be empty</h4> '
-    ;
-  exit;
-}
-elseif ($user_count>0) {
-  echo
-  '<a class="nav__link active" href="add_delete_users.php"> <h3><b>Back</3></h4></a>'.
-  '<h4>a user already exists</h4> '
-    ;
-}
+  if($amount_new==''||$amount_new<0){
+    echo
+    '<a class="nav__link active" href="add_equipments.php"> <h3><b>Back</3></h4></a>'.
+    '<h4>Enter amount</h4> '   ;
+    exit;
+    }
 
 
-$status=$_POST['status'];
-if($status==''){
-  echo
-  '<a class="nav__link active" href="add_delete_users.php"> <h3><b>Back</3></h4></a>'.
-  '<h4>Choose status</h4> '   ;
-  exit;
+ require 'configDB.php';
+ $sql = "SELECT * FROM `equipments` WHERE `equipment_name`=:equipment_name AND `producer`=:producer AND `model`=:model ";
+ $query=$pdo->prepare($sql);
+ $query->execute(array('equipment_name' => $equipment_name,'producer' => $producer,'model' => $model ));
+$amount_old=0;
+  while ($row=$query->fetch(PDO::FETCH_OBJ)) {
+$amount_old=$row->amount;
 }
+$amount_add=$amount_old+$amount_new;
+ $equipment_count=$query->rowCount();
+
+ if($equipment_count>0){
+
+  require 'configDB.php';
+  //$dsn = "mysql:host={$servername};dbname={$dbname}";
+  //$pdo=new PDO($dsn, $username, $password );
+  $sql='UPDATE  equipments SET `amount`= :amount_add WHERE `equipment_name`=:equipment_name AND `producer`=:producer AND `model`=:model ';
+  $query=$pdo->prepare($sql);
+  $query->execute(array('amount_add'=>$amount_add,'equipment_name'=>$equipment_name, 'producer'=> $producer, 'model'=>$model ));
+
+
+
+  echo '<h4>The equipment has been added test.</h4>';
+  echo '<a class="nav__link active" href="add_equipments.php"> <h3><b>Back</3></h4></a>';
+}
+ else
+ {
 require 'configDB.php';
 //$dsn = "mysql:host={$servername};dbname={$dbname}";
 //$pdo=new PDO($dsn, $username, $password );
-$sql='INSERT INTO users(login, user_name, surname, email, password, status) VALUES(:login, :user_name, :surname, :email, :password, :status)';
+$sql='INSERT INTO equipments(equipment_name, model, producer, image, description, URL, tag, amount) VALUES(:equipment_name, :model, :producer, :image, :description, :URL, :tag, :amount)';
 $query=$pdo->prepare($sql);
 
-$query->execute(array('login' => $login, 'user_name' => $user_name, 'surname' => $surname, 'email' => $email, 'password' => $user_password, 'status' => $status));
+$query->execute(array('equipment_name' => $equipment_name, 'model' => $model, 'producer' => $producer, 'image' => $image, 'description' => $description, 'URL' => $URL, 'tag' => $tag, 'amount' => $amount_new));
 
-echo '<h4>The users account has been added.</h4>';
-echo '<a class="nav__link active" href="add_delete_users.php"> <h3><b>Back</3></h4></a>';
+echo '<h4>The equipment has been added.</h4>';
+echo '<a class="nav__link active" href="add_equipments.php"> <h3><b>Back</3></h4></a>';
+}
 
 ?>
-
-
 <?php endif; ?>
 
 </body>

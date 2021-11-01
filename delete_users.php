@@ -45,44 +45,7 @@
   </div>
   <?php else: ?>
 <ul>
-      <div class="disabled__container2">
-        <h4>Add new user: </h4>
-
-               <form action="add_users_post.php" method="post">
-
-           <p>
-                 <label for="firstName">Login:</label>
-                 <input type="text" name="login" id="login" placeholder="Login" class="form-control">
-            </p>
-            <p>
-                <label for="user_password">Password:</label>
-                  <input type="password" name="user_password" id="user_password" placeholder="Password" class="form-control">
-            </p>
-            <p>
-                <label for="firstName">Name:</label>
-                <input type="text" name="user_name" id="user_name" placeholder="Name" class="form-control">
-            </p>
-            <p>
-                <label for="lastName">Surname:</label>
-                  <input type="text" name="surname" id="surname" placeholder="Surname" class="form-control">
-            </p>
-            <p>
-                <label for="emailAddress">Email Address:</label>
-                  <input type="text" name="email" id="email" placeholder="Email" class="form-control">
-            </p>
-            <p>
-                <label for="emailAddress">Status:</label>
-                  <select name="status" id="status" input type="text" class="form-control">
-                    <option value="student">student</option>
-                    <option value="employee">employee</option>
-                  </select>
-
-            </p>
-
-          <button type="submit" name="sendTask" class="btn btn-success">Add</button>
-        </form>
-      </div>
-
+      
 <h4>Delete user: </h4>
       <?php
       require 'configDB.php';

@@ -75,38 +75,7 @@ $login = $_COOKIE['employee'];
            </div>';
      ?>
 
-     <br>
-     <br>
-
-     <?php
-     require 'configDB.php';
-     echo '<ul>';
-     $query=$pdo->query("select * from report_for_employee  order by equipment_name");
-    echo '
-
-    <table class="styled-table">
-   <thead>
-       <tr>
-           <th>Equipment</th>
-           <th>Rent Date</th>
-           <th>User</th>
-       </tr>
-   </thead>
-   <tbody>'         ;
-     while ($row=$query->fetch(PDO::FETCH_OBJ)) {
-     echo '
-                      <tr>
-                          <td>'.$row->equipment_name.'  <br> '.$row->model.'</td>
-                          <td>'.$row->date_borrow.'   </td>
-                           <td>'.$row->user_name.'  '.$row->surname.' <br> '.$row->login.' </td>
-
-                      </tr>   ';}
-                 echo '
-                      <tbody>
-                  </table>
-              </div>';
-        ?>
-
+        
 
 <?php endif; ?>
 

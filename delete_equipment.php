@@ -52,14 +52,14 @@ $login = $_COOKIE['employee'];
 <?php
 require 'configDB.php';
 
-$user_id=$_GET['user_id'];
+$equipment_id=$_GET['equipment_id'];
 
-$sql = 'DELETE FROM `users` WHERE `user_id`= :user_id';
+$sql = 'DELETE FROM `equipments` WHERE `equipment_id`= :equipment_id';
 $query=$pdo->prepare($sql);
-$query->execute(['user_id'=>$user_id]);
+$query->execute(['equipment_id'=>$equipment_id]);
 
-echo '<h4>The users account has been deleted.</h4>';
-echo '<a class="nav__link active" href="add_delete_users.php"> <h3><b>Back</3></h4></a>';
+echo '<h4>The equipment account has been deleted.</h4>';
+echo '<a class="nav__link active" href="delete_equipments.php"> <h3><b>Back</3></h4></a>';
 
 
 

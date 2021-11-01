@@ -83,41 +83,8 @@
         </form>
       </div>
 
-<h4>Delete user: </h4>
-      <?php
-      require 'configDB.php';
-      echo '<ul>';
-      $query=$pdo->query('    SELECT `user_id` , `login` , `user_name` , `surname` , `email` , `status` FROM `users` order by `user_id`   ');
 
-      echo '
 
-      <table class="styled-table">
-      <thead>
-        <tr>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Login</th>
-            <th>Email</th>
-            <th>Status</th>
-            <th> </th>
-        </tr>
-      </thead>
-      <tbody>'         ;
-      while ($row=$query->fetch(PDO::FETCH_OBJ)) {
-      echo '
-                       <tr>
-                           <td>'.$row->user_name.'</td>
-                            <td>'.$row->surname.'</td>
-                           <td>'.$row->login.'</td>
-                            <td>'.$row->email.' </td>
-                            <td>'.$row->status.' </td>
-                            <td><a href="delete_user.php?user_id='.$row->user_id.'"><button>Delete</button></a> </td>
-                       </tr>   ';}
-                  echo '
-                       <tbody>
-                   </table>
-               </div>';
-         ?>
     <?php endif; ?>
 
     </body>

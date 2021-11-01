@@ -43,50 +43,6 @@
   </div>
   <?php else: ?>
 <ul>
-      <div class="disabled__container2">
-        <h4>Add new equipment: </h4>
-               <form action="add_equipment_post.php" method="post">
-           <p>
-                 <label for="equipment_name">equipment_name:</label>
-                 <input type="text" name="equipment_name" id="equipment_name" placeholder="equipment_name" class="form-control">
-            </p>
-
-            <p>
-                <label for="producer">producer:</label>
-                <input type="text" name="producer" id="producer" placeholder="producer" class="form-control">
-            </p>
-            <p>
-                <label for="model">model:</label>
-                  <input type="text" name="model" id="model" placeholder="model" class="form-control">
-            </p>
-            <p>
-                <label for="image">image: get relative path to the file</label>
-                  <input type="text" name="image" id="image" placeholder="image" class="form-control">
-            </p>
-            <p>
-                <label for="description">description:</label>
-                  <input type="text" name="description" id="description" placeholder="description" class="form-control">
-            </p>
-            <p>
-                <label for="URL">URL:</label>
-                  <input type="text" name="URL" id="URL" placeholder="URL" class="form-control">
-            </p>
-            <p>
-                <label for="amount">amount:</label>
-                  <input type="number"step="1" name="amount" id="amount" placeholder="amount" class="form-control">
-            </p>
-            <p>
-                <label for="tag">tag:</label>
-                  <select name="tag" id="tag" input type="text" class="form-control">
-                    <option value="microscope">microscope</option>
-                    <option value="chemistry">chemistry</option>
-                    <option value="physics">physics</option>
-                    <option value=""></option>
-                  </select>
-            </p>
-          <button type="submit" name="sendTask" class="btn btn-success">Add</button>
-        </form>
-      </div>
 
 <h4>Delete equipment: </h4>
       <?php
@@ -99,12 +55,12 @@
       <table class="styled-table">
       <thead>
         <tr>
-            <th>equipment_name</th>
-            <th>producer</th>
-            <th>model</th>
-            <th>image</th>
-            <th>tag</th>
-            <th>amount</th>
+            <th>Name</th>
+            <th>Producer</th>
+            <th>Model</th>
+            <th>Image</th>
+            <th>Tag</th>
+            <th>Amount</th>
             <th> </th>
         </tr>
       </thead>

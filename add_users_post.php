@@ -68,7 +68,7 @@ if($login==''){
 }
 elseif ($login_count>0) {
   echo
-  '<a class="nav__link active" href="add_delete_users.php"> <h3><b>Back</3></h4></a>'.
+  '<a class="nav__link active" href="add_users.php"> <h3><b>Back</3></h4></a>'.
   '<h4>The login is used</h4> '
     ;
   exit;
@@ -76,7 +76,7 @@ elseif ($login_count>0) {
 
 if($user_password==''){
   echo
-  '<a class="nav__link active" href="add_delete_users.php"> <h3><b>Back</3></h4></a>'.
+  '<a class="nav__link active" href="add_users.php"> <h3><b>Back</3></h4></a>'.
   '<h4>Enter password</h4> '   ;
   exit;
   }
@@ -91,14 +91,14 @@ $user_count=$query->rowCount();
 
 if($user_name==''||$surname==''){
   echo
-  '<a class="nav__link active" href="add_delete_users.php"> <h3><b>Back</3></h4></a>'.
+  '<a class="nav__link active" href="add_users.php"> <h3><b>Back</3></h4></a>'.
   '<h4>First name and surname cannot be empty</h4> '
     ;
   exit;
 }
 elseif ($user_count>0) {
   echo
-  '<a class="nav__link active" href="add_delete_users.php"> <h3><b>Back</3></h4></a>'.
+  '<a class="nav__link active" href="add_users.php"> <h3><b>Back</3></h4></a>'.
   '<h4>a user already exists</h4> '
     ;
 }
@@ -107,7 +107,7 @@ elseif ($user_count>0) {
 $status=$_POST['status'];
 if($status==''){
   echo
-  '<a class="nav__link active" href="add_delete_users.php"> <h3><b>Back</3></h4></a>'.
+  '<a class="nav__link active" href="add_users.php"> <h3><b>Back</3></h4></a>'.
   '<h4>Choose status</h4> '   ;
   exit;
 }
@@ -119,8 +119,8 @@ $query=$pdo->prepare($sql);
 
 $query->execute(array('login' => $login, 'user_name' => $user_name, 'surname' => $surname, 'email' => $email, 'password' => $user_password, 'status' => $status));
 
-echo '<h4>The users account has been added.</h4>';
-echo '<a class="nav__link active" href="add_delete_users.php"> <h3><b>Back</3></h4></a>';
+echo '<h4>The user`s account has been added.</h4>';
+echo '<a class="nav__link active" href="add_users.php"> <h3><b>Back</3></h4></a>';
 
 ?>
 

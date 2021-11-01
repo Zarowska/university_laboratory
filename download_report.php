@@ -36,9 +36,9 @@ $pdf->Ln();
 $pdf->Ln();
 
 $pdf->Cell(40,10,"Equipment",1,0);
-$pdf->Cell(45,10,"Date of Borrowing",1,0);
+$pdf->Cell(45,10,"Rent Date",1,0);
 $pdf->Cell(25,10,"Login",1,0);
- $pdf->Cell(35,10,"First name",1,0);
+ $pdf->Cell(35,10,"Name",1,0);
   $pdf->Cell(35,10,"Surname",1,0);
 $query=$pdo->query("select * from report_for_employee  order by equipment_name");
  while ($row=$query->fetch(PDO::FETCH_OBJ)) {

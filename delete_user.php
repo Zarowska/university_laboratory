@@ -58,8 +58,8 @@ $sql = 'DELETE FROM `users` WHERE `user_id`= :user_id';
 $query=$pdo->prepare($sql);
 $query->execute(['user_id'=>$user_id]);
 
-echo '<h4>The users account has been deleted.</h4>';
-echo '<a class="nav__link active" href="add_delete_users.php"> <h3><b>Back</3></h4></a>';
+echo '<h4>The user`s account has been deleted.</h4>';
+echo '<a class="nav__link active" href="delete_users.php"> <h3><b>Back</3></h4></a>';
 
 
 

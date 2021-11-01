@@ -46,60 +46,33 @@ $login = $_COOKIE['employee'];
   ?>
 
 
-  <?php
-  require 'configDB.php';
-  echo '<ul>';
-  $query=$pdo->query("select * from report_for_guest  order by equipment_name");
- echo '
-
- <table class="styled-table">
-<thead>
-    <tr>
-        <th>Equipment</th>
-        <th>amount</th>
-        <th>available</th>
-    </tr>
-</thead>
-<tbody>'         ;
-  while ($row=$query->fetch(PDO::FETCH_OBJ)) {
-  echo '
-                   <tr>
-                       <td>'.$row->equipment_name.'  <br> '.$row->model.'</td>
-                       <td>'.$row->amount.'  </td>
-                        <td>'.$row->amount_free.' </td>
-
-                   </tr>   ';}
-              echo '
-                   <tbody>
-               </table>
-           </div>';
-     ?>
-
-     <br>
      <br>
 
      <?php
      require 'configDB.php';
      echo '<ul>';
-     $query=$pdo->query("select * from report_for_employee  order by equipment_name");
+     $query=$pdo->query("select * from  users");
     echo '
 
     <table class="styled-table">
    <thead>
        <tr>
-           <th>Equipment</th>
-           <th>Rent Date</th>
-           <th>User</th>
+           <th>Login</th>
+           <th>Name</th>
+           <th>Surname</th>
+           <th>Email</th>
+           <th>Status</th>
        </tr>
    </thead>
    <tbody>'         ;
      while ($row=$query->fetch(PDO::FETCH_OBJ)) {
      echo '
                       <tr>
-                          <td>'.$row->equipment_name.'  <br> '.$row->model.'</td>
-                          <td>'.$row->date_borrow.'   </td>
-                           <td>'.$row->user_name.'  '.$row->surname.' <br> '.$row->login.' </td>
-
+                          <td>'.$row->login.'</td>
+                          <td>'.$row->user_name.'  </td>
+                           <td>'.$row->surname.'  </td>
+                           <td>'.$row->email.'  </td>
+                            <td>'.$row->status.'  </td>
                       </tr>   ';}
                  echo '
                       <tbody>

@@ -66,15 +66,20 @@
                  <td><h4> Report </h4> </td>
                </tr>
                <tr>
-                  <td><h4> <a href="add_delete_users.php">Add or delete users</a> </h4></td>
-                  <td><h4> <a href="add_delete_equipments.php">Add or delete equipments</a> </h4> </td>
-                  <td><h4> <a href="report_for_employee.php">Show report</a> </h4> </td>
+                  <td><h4> <a href="add_users.php">Add users</a> </h4></td>
+                  <td><h4> <a href="add_equipments.php">Add equipments</a> </h4> </td>
+                  <td><h4> <a href="report_for_employee_1.php">See report 1</a> </h4> </td>
               </tr>
               <tr>
-            <td></td>
-              <td></td>
-                 <td><h4> <a href="download_report.php">Download report</a> </h4> </td>
+            <td><h4> <a href="delete_users.php">Delete users</a> </h4></td>
+              <td><h4> <a href="delete_equipments.php">Delete equipments</a> </h4></td>
+                 <td><h4> <a href="report_for_employee_2.php">See report 2</a> </h4> </td>
                  </tr>
+                 <tr>
+               <td><h4> <a href="all_users.php">See users</a> </h4></td>
+                 <td><h4> <a href="index.php">See equipments</a> </h4></td>
+                 <td><h4> <a href="download_report.php">Download report</a> </h4> </td>
+               </tr>
           </table>
   	</div>
 </div>
